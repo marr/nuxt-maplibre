@@ -9,9 +9,11 @@ export default defineNuxtConfig({
     }
   },
 
-  app: {
-    baseURL: '/'
+  runtimeConfig: {
+    public: {
+      mapTilerKey: '',
+      googleMapTilesApiKey: ''
+    }
   },
-
-  compatibilityDate: '2024-07-26'
+  compatibilityDate: '2024-10-26'
 })

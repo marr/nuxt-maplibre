@@ -1,5 +1,7 @@
+<script lang="ts" setup>
+</script>
 <template>
   <div>
-    <h1>Hello Nuxt</h1>
+    <LocationChooser :map-provider="$route.query.provider" />
   </div>
 </template>
