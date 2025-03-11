@@ -1,4 +1,4 @@
-[![nuxt-maplibre](./docs/public/cover.png)](https://gugustinette.github.io/nuxt-maplibre)
+[![nuxt-maplibre](./docs/public/cover.png)](https://marr.github.io/nuxt-maplibre)
 
 # Nuxt Maplibre
 
@@ -13,7 +13,7 @@ It was made using [vue-maplibre-gl](https://indoorequal.github.io/vue-maplibre-g
 This module is really just about making it work with Nuxt without the need to configure anything.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-- [📖 &nbsp;Documentation](https://gugustinette.github.io/nuxt-maplibre)
+- [📖 &nbsp;Documentation](https://marr.github.io/nuxt-maplibre)
 
 ## Features
 

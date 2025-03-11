@@ -13,3 +13,4 @@ This is the initial release, which automatically imports the MapLibre CSS, Vue c
 ### ❤️  Contributors
 
 - Gugustinette <mercier.augustin@outlook.fr>
+- David Marr <marr>
