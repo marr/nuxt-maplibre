@@ -15,7 +15,7 @@ import type { LngLatLike } from "maplibre-gl";
 
 maplibregl.addProtocol("google", googleProtocol);
 
-const { mapProvider } = defineProps<{ mapProvider: string }>();
+const { mapProvider = '' } = defineProps<{ mapProvider: string }>();
 const { mapTilerKey, googleMapTilesApiKey } = useRuntimeConfig().public;
 
 const style = computed(() => {
