@@ -1,11 +1,11 @@
 {
-  "name": "nuxt-maplibre",
+  "name": "@dmarr/nuxt-maplibre",
   "version": "1.0.1",
   "description": "A Nuxt module to use MapLibre",
-  "homepage": "https://gugustinette.github.io/nuxt-maplibre",
-  "repository": "https://github.com/gugustinette/nuxt-maplibre",
+  "homepage": "https://marr.github.io/nuxt-maplibre",
+  "repository": "https://github.com/marr/nuxt-maplibre",
   "bugs": {
-    "url": "https://github.com/gugustinette/nuxt-maplibre/issues"
+    "url": "https://github.com/marr/nuxt-maplibre/issues"
   },
   "license": "Apache-2.0",
   "type": "module",
@@ -37,24 +37,25 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@indoorequal/vue-maplibre-gl": "^7.4.0",
-    "maplibre-gl": "^4.5.0"
+    "@indoorequal/vue-maplibre-gl": "^8.2.2",
+    "maplibre-gl": "^5.2.0",
+    "maplibre-google-maps": "^1.1.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint-config": "^0.5.0",
-    "@nuxt/kit": "^3.14.0",
-    "@nuxt/module-builder": "^0.8.1",
-    "@nuxt/schema": "^3.14.0",
-    "@nuxt/test-utils": "^3.14.0",
-    "@nuxt/ui": "^2.18.2",
-    "@types/node": "^20.14.13",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "caniuse-lite": "^1.0.30001643",
-    "changelogen": "^0.5.5",
-    "eslint": "^9.8.0",
-    "nuxt": "^3.14.0",
-    "vitepress": "^1.3.1",
-    "vitest": "^2.0.4"
+    "@nuxt/eslint-config": "^1.2.0",
+    "@nuxt/kit": "^3.16.0",
+    "@nuxt/module-builder": "^0.8.4",
+    "@nuxt/schema": "^3.16.0",
+    "@nuxt/test-utils": "^3.17.2",
+    "@nuxt/ui": "^2.21.1",
+    "@types/node": "^22.13.10",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "caniuse-lite": "^1.0.30001703",
+    "changelogen": "^0.6.1",
+    "eslint": "^9.22.0",
+    "nuxt": "^3.16.0",
+    "vitepress": "^1.6.3",
+    "vitest": "^3.0.8"
   }
 }

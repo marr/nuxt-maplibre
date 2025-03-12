@@ -43,8 +43,8 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/gugustinette/nuxt-maplibre' },
-      { icon: 'npm', link: 'https://www.npmjs.com/package/nuxt-maplibre' }
+      { icon: 'github', link: 'https://github.com/marr/nuxt-maplibre' },
+      // { icon: 'npm', link: 'https://www.npmjs.com/package/nuxt-maplibre' }
     ],
 
     search: {

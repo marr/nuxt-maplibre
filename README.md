@@ -1,4 +1,4 @@
-[![nuxt-maplibre](./docs/public/cover.png)](https://gugustinette.github.io/nuxt-maplibre)
+[![nuxt-maplibre](./docs/public/cover.png)](https://marr.github.io/nuxt-maplibre)
 
 # Nuxt Maplibre
 
@@ -13,7 +13,7 @@ It was made using [vue-maplibre-gl](https://indoorequal.github.io/vue-maplibre-g
 This module is really just about making it work with Nuxt without the need to configure anything.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-- [📖 &nbsp;Documentation](https://gugustinette.github.io/nuxt-maplibre)
+- [📖 &nbsp;Documentation](https://marr.github.io/nuxt-maplibre)
 
 ## Features
 
@@ -80,14 +80,14 @@ npm run release
 ```
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-maplibre/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://www.npmjs.com/package/nuxt-maplibre
+[npm-version-src]: https://img.shields.io/npm/v/@dmarr/nuxt-maplibre/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://www.npmjs.com/package/@dmarr/nuxt-maplibre
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://www.npmjs.com/package/nuxt-maplibre
+[npm-downloads-src]: https://img.shields.io/npm/dm/@dmarr/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://www.npmjs.com/package/@dmarr/nuxt-maplibre
 
-[license-src]: https://img.shields.io/npm/l/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
-[license-href]: https://www.npmjs.com/package/nuxt-maplibre
+[license-src]: https://img.shields.io/npm/l/@dmarr/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://www.npmjs.com/package/@dmarr/nuxt-maplibre
 
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
 [nuxt-href]: https://nuxt.com

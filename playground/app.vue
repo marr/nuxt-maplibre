@@ -12,17 +12,13 @@
 
 <script setup lang="ts">
 const links = [{
-  label: 'Home',
-  icon: 'i-heroicons-home',
-  to: '/'
+  label: 'MapTiler',
+  icon: 'i-simple-icons-maplibre',
+  to: { path: '/', query: { provider : 'maptiler' }}
 }, {
-  label: 'Map',
-  icon: 'i-heroicons-map-solid',
-  to: '/map/map'
-}, {
-  label: 'Map Basic',
-  icon: 'i-heroicons-map-solid',
-  to: '/map/map-basic'
+  label: 'Google',
+  icon: 'i-simple-icons-googlemaps',
+  to: { path: '/', query: { provider : 'google' }}
 }]
 </script>
 
