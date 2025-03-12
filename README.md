@@ -80,14 +80,14 @@ npm run release
 ```
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-maplibre/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://www.npmjs.com/package/nuxt-maplibre
+[npm-version-src]: https://img.shields.io/npm/v/@dmarr/nuxt-maplibre/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://www.npmjs.com/package/@dmarr/nuxt-maplibre
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://www.npmjs.com/package/nuxt-maplibre
+[npm-downloads-src]: https://img.shields.io/npm/dm/@dmarr/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://www.npmjs.com/package/@dmarr/nuxt-maplibre
 
-[license-src]: https://img.shields.io/npm/l/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
-[license-href]: https://www.npmjs.com/package/nuxt-maplibre
+[license-src]: https://img.shields.io/npm/l/@dmarr/nuxt-maplibre.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://www.npmjs.com/package/@dmarr/nuxt-maplibre
 
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
 [nuxt-href]: https://nuxt.com

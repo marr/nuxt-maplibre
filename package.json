@@ -1,6 +1,6 @@
 {
   "name": "@dmarr/nuxt-maplibre",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A Nuxt module to use MapLibre",
   "homepage": "https://marr.github.io/nuxt-maplibre",
   "repository": "https://github.com/marr/nuxt-maplibre",
