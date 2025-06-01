@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@theme {
+  --font-sans: 'Public Sans', sans-serif;
+}
+.maplibregl-map {
+  --ml-font-icons: maplibregl-icons-lucide;
+  --ml-c-bg-1: var(--ui-bg-elevated);
+}

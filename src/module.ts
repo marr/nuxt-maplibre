@@ -55,8 +55,12 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {},
   async setup(options, nuxt) {
-    // Add MapLibre's CSS
-    nuxt.options.css.push('maplibre-gl/dist/maplibre-gl.css')
+    // Add CSS using mapblibre-theme. It is much smaller than maplibre-gl.css
+    // and has a more modern look.
+    nuxt.options.css.push(
+      'maplibre-theme/icons.lucide.css',
+      'maplibre-theme/modern.css',
+    )
 
     // Auto-import vue-maplibre-gl components
     for (const component of components) {
