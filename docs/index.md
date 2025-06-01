@@ -3,11 +3,11 @@
 layout: home
 
 hero:
-  name: "Nuxt Maplibre"
+  name: "Nuxt MapLibre"
   text: "<span class='libre-keyword'>Libre</span> to use maps"
   image:
     src: /favicon.png
-    alt: Nuxt Maplibre Logo
+    alt: Nuxt MapLibre Logo
   actions:
     - theme: brand
       text: Quick start
@@ -15,12 +15,17 @@ hero:
     - theme: alt
       text: Components
       link: /components/introduction
+    - theme: alt
+      text: Demo
+      link: /demo
 
 features:
   - title: No configuration needed ⚙️
     details: Everything is set up for you out of the box.
-  - title: Typescript support 🦺
-    details: Full typescript support.
+  - title: TypeScript support 🦺
+    details: Full TypeScript support.
   - title: Auto import components 🚀
     details: Components are automatically imported for you.
+  - title: CSS customization via maplibre-theme 🎨
+    details: Lighter weight css than MapLibre's own library
 ---
