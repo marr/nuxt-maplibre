@@ -4,26 +4,26 @@ outline: deep
 
 # Installation
 
-## Basic (Recommended)
+## Automatic (Recommended)
 
 ```bash
-npx nuxi@latest module add nuxt-maplibre
+npx nuxi@latest module add @dmarr/nuxt-maplibre
 ```
 
 ## Manual
 
-- Add `nuxt-maplibre` dependency to your project
+- Add `@dmarr/nuxt-maplibre` dependency to your project
 
 ```bash
-npm install nuxt-maplibre
+npm install @dmarr/nuxt-maplibre
 ```
 
-- Add `nuxt-maplibre` to the `modules` section of `nuxt.config.ts`
+- Add `@dmarr/nuxt-maplibre` to the `modules` section of `nuxt.config.ts`
 
 ```ts
 export default defineNuxtConfig({
   modules: [
-    'nuxt-maplibre'
+    '@dmarr/nuxt-maplibre'
   ]
 })
 ```

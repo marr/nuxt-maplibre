@@ -11,3 +11,5 @@ If you find any errors related the Nuxt module (a composable not available for e
 ::: tip
 Note that composables are exported with the `Mgl` prefix added to the name of the composable. For example, the `useMap` composable is exported as `useMglMap`.
 :::
+
+See the list of composables at the [vue-maplibre-gl composables documentation](https://indoorequal.github.io/vue-maplibre-gl/api/composables.html), and remember to read the tip above about the prefix.

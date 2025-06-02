@@ -46,7 +46,7 @@ export const composables = [
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'nuxt-maplibre',
+    name: '@dmarr/nuxt-maplibre',
     configKey: 'maplibre',
     compatibility: {
       nuxt: '>=3.0.0',

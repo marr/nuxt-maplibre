@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Nuxt Maplibre",
-  description: "Documentation for the Nuxt Maplibre module",
+  title: "Nuxt MapLibre",
+  description: "Documentation for the Nuxt MapLibre module",
   head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   base: process.env.NODE_ENV === 'production' ? '/nuxt-maplibre/' : '/',
   cleanUrls: true,

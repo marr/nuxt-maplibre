@@ -20,7 +20,7 @@ const style = ref<keyof typeof styleMap>('google-roadmap');
 const styleOptions = [
   { key: 'google-satellite', label: 'Google Satellite', icon: 'i-simple-icons-googlemaps' },
   { key: 'google-roadmap', label: 'Google Roadmap', icon: 'i-simple-icons-googlemaps' },
-  { key: 'maplibre-demo', label: 'Maplibre Demotiles', icon: 'i-simple-icons-maplibre' },
+  { key: 'maplibre-demo', label: 'MapLibre Demotiles', icon: 'i-simple-icons-maplibre' },
   { key: 'dataviz', label: 'MapTiler Dataviz', icon: 'i-simple-icons-maptiler' },
   { key: 'streets', label: 'MapTiler Streets', icon: 'i-simple-icons-maptiler' },
   { key: 'satellite', label: 'MapTiler Satellite', icon: 'i-simple-icons-maptiler' },

@@ -1,6 +1,6 @@
-[![nuxt-maplibre](./docs/public/cover.png)](https://marr.github.io/nuxt-maplibre)
+[![@dmarr/nuxt-maplibre](./docs/public/cover.png)](https://marr.github.io/nuxt-maplibre)
 
-# Nuxt Maplibre
+# Nuxt MapLibre
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -24,7 +24,7 @@ This module is really just about making it work with Nuxt without the need to co
 ## Quick Setup
 
 ```bash
-npx nuxi@latest module add nuxt-maplibre
+npx nuxi@latest module add @dmarr/nuxt-maplibre
 ```
 
 That's it! You can now use MapLibre in your Nuxt app ✨
@@ -47,9 +47,9 @@ For a complete list of the components available, check out the [vue-maplibre-gl 
 </template>
 
 <script setup>
-const style = 'https://api.maptiler.com/maps/streets/style.json?key=cQX2iET1gmOW38bedbUh';
-const center = [-1.559482, 47.21322];
-const zoom = 8;
+const style = 'https://api.maptiler.com/maps/streets/style.json?key=mWnHmcL4ekj6wks9iCeV';
+const center = [-71.058, 42.357];
+const zoom = 14;
 </script>
 ```
 
