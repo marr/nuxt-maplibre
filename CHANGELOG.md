@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.2.0
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v1.1.0...v1.2.0)
+
+### 🚀 Enhancements
+
+- Use clean URLs so demo is linked correctly ([7beaec9](https://github.com/marr/nuxt-maplibre/commit/7beaec9))
+
+### 🏡 Chore
+
+- Update installation and usage instructions ([7407478](https://github.com/marr/nuxt-maplibre/commit/7407478))
+
+### ❤️ Contributors
+
+- David Marr <david.marr@contextlabs.com>
+
 ## v1.1.0
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/1.0.1...v1.1.0)
