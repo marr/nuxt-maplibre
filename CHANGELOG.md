@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.2
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v1.2.0...v1.2.2)
+
+### 🩹 Fixes
+
+- Add lucide styles to build ([f1a326e](https://github.com/marr/nuxt-maplibre/commit/f1a326e))
+
+### ❤️ Contributors
+
+- David Marr <david.marr@contextlabs.com>
+
 ## v1.2.0
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v1.1.0...v1.2.0)
