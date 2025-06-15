@@ -50,3 +50,7 @@
 .libre-keyword {
   font-style: oblique;
 }
+
+.maplibregl-map {
+  --ml-font-icons: maplibregl-icons-lucide;
+}
