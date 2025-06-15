@@ -32,6 +32,7 @@ jobs:
     env:
       NUXT_PUBLIC_MAP_TILER_KEY: ${{ vars.NUXT_PUBLIC_MAP_TILER_KEY }}
       NUXT_PUBLIC_GOOGLE_MAP_TILES_API_KEY: ${{ vars.NUXT_PUBLIC_GOOGLE_MAP_TILES_API_KEY }}
+      NUXT_PUBLIC_CLOCKWORK_API_KEY: ${{ vars.NUXT_PUBLIC_CLOCKWORK_API_KEY }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

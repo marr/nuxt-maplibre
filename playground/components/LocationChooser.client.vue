@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import maplibre from "maplibre-gl";
-import MaplibreInspect from "@maplibre/maplibre-gl-inspect";
 import type { LngLatLike, StyleSpecification } from "maplibre-gl";
 
 const { LngLat } = maplibre;
@@ -8,16 +7,16 @@ const { mapStyle } = defineProps<{
   mapStyle: string | StyleSpecification | undefined;
 }>();
 
-const center = ref<LngLatLike>([-71.40949443678494, 42.39729363467626]);
+const center = ref<LngLatLike>([-70.99472213822588, 42.37041979229858]);
 const coordinates = ref<LngLatLike>([-70.84961090021761, 42.262697082725936]);
 LngLat;
-const zoom = ref(8);
+const zoom = ref(10);
 </script>
 <template>
-  <MglMap :map-style v-model:center="center" v-model:zoom="zoom">
+  <MglMap :map-style v-model:center="center" v-model:zoom="zoom" @map:idle="console.log('Map idle')">
     <MglNavigationControl />
     <MglMarker draggable v-model:coordinates="coordinates">
-      <MglPopup ref="popup" close-button>
+      <MglPopup ref="popup" :close-button="false">
         <div class="p-2">
           <h3 class="text-lg font-semibold">Marker Info</h3>
           <p>Coordinates: {{ LngLat.convert(coordinates) }}</p>
@@ -32,6 +31,5 @@ const zoom = ref(8);
         <p>Map zoom: {{ zoom }}</p>
       </div>
     </MglCustomControl>
-    <MapInspector position="top-right" />
   </MglMap>
 </template>

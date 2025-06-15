@@ -37,7 +37,6 @@
     "maplibre-theme": "^1.0.0"
   },
   "devDependencies": {
-    "@maplibre/maplibre-gl-inspect": "^1.7.1",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^1.4.1",
     "@nuxt/kit": "^3.17.4",

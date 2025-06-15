@@ -5,7 +5,7 @@ import type { DropdownMenuItem } from "@nuxt/ui";
 
 maplibregl.addProtocol("google", googleProtocol);
 
-const { mapTilerKey, googleMapTilesApiKey } = useRuntimeConfig().public;
+const { clockworkApiKey, mapTilerKey, googleMapTilesApiKey } = useRuntimeConfig().public;
 const styleMap = {
   "maplibre-demo": "https://demotiles.maplibre.org/style.json",
   dataviz:
@@ -24,11 +24,16 @@ const styleMap = {
     "roadmap",
     googleMapTilesApiKey
   ),
+  "clockwork-streets": `https://maps.clockworkmicro.com/streets/v1/style?x-api-key=${clockworkApiKey}`,
 };
 
-const style = ref<keyof typeof styleMap>("google-roadmap");
+const style = ref<keyof typeof styleMap>("clockwork-streets");
 
 const styleOptions = [
+  { key: 'clockwork-streets',
+    label: "Clockwork Streets",
+    icon: "i-lucide-cog",
+  },
   {
     key: "google-satellite",
     label: "Google Satellite",
@@ -70,6 +75,8 @@ const items = computed<DropdownMenuItem[]>(() =>
     type: "checkbox" as const,
   }))
 );
+
+
 </script>
 <template>
   <div class="flex flex-col h-screen">
@@ -87,7 +94,7 @@ const items = computed<DropdownMenuItem[]>(() =>
         </UDropdownMenu>
       </div>
     </div>
-    <div class="flex-grow">
+    <div class="flex-grow rounded-2xl mx-4 my-2 overflow-hidden">
       <LocationChooser :map-style="styleMap[style]" />
     </div>
   </div>
