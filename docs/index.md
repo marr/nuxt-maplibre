@@ -17,7 +17,8 @@ hero:
       link: /components/introduction
     - theme: alt
       text: Demo
-      link: /demo/
+      link: /demo
+      target: _self
 
 features:
   - title: No configuration needed ⚙️

@@ -13,7 +13,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Quick Start', link: '/getting-started/installation' },
       { text: 'Components', link: '/components/introduction' },
-      { text: 'Demo', link: '/demo/' }
+      { text: 'Demo', link: '/demo', target: '_self' }
     ],
 
     sidebar: [
@@ -22,7 +22,7 @@ export default defineConfig({
         items: [
           { text: 'Installation', link: '/getting-started/installation' },
           { text: 'Usage', link: '/getting-started/usage' },
-          { text: 'Demo', link: '/demo/' }
+          { text: 'Demo', link: '/demo', target: '_self' }
         ]
       },
       {
