@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.0.1
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.0...v2.0.1)
+
+### 🏡 Chore
+
+- Bump to node 22 ([4a4c93a](https://github.com/marr/nuxt-maplibre/commit/4a4c93a))
+
+### ❤️ Contributors
+
+- David Marr <david.marr@contextlabs.com>
+
 ## v2.0.0
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v1.2.2...v2.0.0)
