@@ -54,7 +54,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: '@dmarr/nuxt-maplibre',
     configKey: 'maplibre',
     compatibility: {
-      nuxt: '>=3.0.0',
+      nuxt: '^3.0.0 || ^4.0.0',
     },
   },
   // Default configuration options of the Nuxt module
