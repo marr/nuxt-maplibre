@@ -1,5 +1,28 @@
 # Changelog
 
+## v2.0.0
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v1.2.2...v2.0.0)
+
+### 🩹 Fixes
+
+- Demo link and popup ([a5ce4e2](https://github.com/marr/nuxt-maplibre/commit/a5ce4e2))
+- Use _self for target to avoid vitepress interception ([5693d8b](https://github.com/marr/nuxt-maplibre/commit/5693d8b))
+- Add missing style rule for lucide icons ([8d2c597](https://github.com/marr/nuxt-maplibre/commit/8d2c597))
+
+### 🏡 Chore
+
+- Lint files on save ([ca4d1a3](https://github.com/marr/nuxt-maplibre/commit/ca4d1a3))
+- ⚠️  Support Nuxt 4; keep Nuxt 3 compatibility ([9f8c35a](https://github.com/marr/nuxt-maplibre/commit/9f8c35a))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Support Nuxt 4; keep Nuxt 3 compatibility ([9f8c35a](https://github.com/marr/nuxt-maplibre/commit/9f8c35a))
+
+### ❤️ Contributors
+
+- David Marr <david.marr@contextlabs.com>
+
 ## v1.2.2
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v1.2.0...v1.2.2)
