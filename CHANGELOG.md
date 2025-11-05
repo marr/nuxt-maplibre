@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.0.3
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.1...v2.0.3)
+
+### 🏡 Chore
+
+- Upgrade to nuxt 4 ([ea2bffc](https://github.com/marr/nuxt-maplibre/commit/ea2bffc))
+- Update dependencies ([5d74fd9](https://github.com/marr/nuxt-maplibre/commit/5d74fd9))
+
+### ❤️ Contributors
+
+- David Marr <david.marr@contextlabs.com>
+
 ## v2.0.1
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.0...v2.0.1)
