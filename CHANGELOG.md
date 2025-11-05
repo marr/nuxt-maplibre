@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.4
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.3...v2.0.4)
+
 ## v2.0.3
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.1...v2.0.3)
