@@ -1,5 +1,19 @@
 # Changelog
 
+## v2.0.5
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.3...v2.0.5)
+
+### 🏡 Chore
+
+- Update dependencies ([5d74fd9](https://github.com/marr/nuxt-maplibre/commit/5d74fd9))
+- **release:** V2.0.3 ([560091d](https://github.com/marr/nuxt-maplibre/commit/560091d))
+- **release:** V2.0.4 ([bf6d4c0](https://github.com/marr/nuxt-maplibre/commit/bf6d4c0))
+
+### ❤️ Contributors
+
+- David Marr <dave.marr@gmail.com>
+
 ## v2.0.4
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.3...v2.0.4)
