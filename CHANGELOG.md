@@ -11,7 +11,7 @@
 
 ### ❤️ Contributors
 
-- David Marr <david.marr@contextlabs.com>
+- David Marr <dave.marr@gmail.com>
 
 ## v2.0.1
 
@@ -23,7 +23,7 @@
 
 ### ❤️ Contributors
 
-- David Marr <david.marr@contextlabs.com>
+- David Marr <dave.marr@gmail.com>
 
 ## v2.0.0
 
@@ -46,7 +46,7 @@
 
 ### ❤️ Contributors
 
-- David Marr <david.marr@contextlabs.com>
+- David Marr <dave.marr@gmail.com>
 
 ## v1.2.2
 
@@ -58,7 +58,7 @@
 
 ### ❤️ Contributors
 
-- David Marr <david.marr@contextlabs.com>
+- David Marr <dave.marr@gmail.com>
 
 ## v1.2.0
 
@@ -74,7 +74,7 @@
 
 ### ❤️ Contributors
 
-- David Marr <david.marr@contextlabs.com>
+- David Marr <dave.marr@gmail.com>
 
 ## v1.1.0
 
@@ -96,7 +96,7 @@
 
 ### ❤️ Contributors
 
-- David Marr <david.marr@contextlabs.com>
+- David Marr <dave.marr@gmail.com>
 
 ## v1.0.2
 
