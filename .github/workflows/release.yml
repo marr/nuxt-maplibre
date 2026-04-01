@@ -32,7 +32,7 @@ jobs:
       - name: Configuring Git
         run: git config --global user.name "GitHub CD bot" && git config --global user.email "github-cd-bot@users.noreply.github.com"
       - name: Update package version
-        run: pnpm --no-git-tag-version version ${GITHUB_REF_NAME#v}
+        run: npm version --no-git-tag-version ${GITHUB_REF_NAME#v}
       - name: Publish package to NPM
         run: pnpm publish
         env:
