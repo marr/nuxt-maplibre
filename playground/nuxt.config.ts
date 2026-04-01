@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      ignore: ['/map/map', '/map/map-basic'],
+      ignore: ['/map/markers', '/map/sources', '/map/controls'],
     },
   },
 })

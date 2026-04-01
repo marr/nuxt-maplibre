@@ -6,3 +6,29 @@
 .maplibregl-map {
   --ml-c-bg-1: var(--ui-bg-elevated);
 }
+
+/*
+ * Controls demo: MapLibre wordmark uses --ml-c-logo-*; align with app text so it
+ * stays legible on bright basemaps (theme defaults can look “inverted” on light tiles).
+ */
+.playground-controls-map .maplibregl-map {
+  --ml-c-logo-1: var(--ui-text-muted);
+  --ml-c-logo-2: var(--ui-text-highlighted);
+}
+
+.playground-controls-map .maplibregl-map a.maplibregl-ctrl-logo:before {
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+}
+
+/* Custom marker popup: card supplies its own chrome; drop default shell padding/shadow */
+.playground-marker-popup .maplibregl-popup-content {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.playground-marker-popup .maplibregl-popup-tip {
+  display: none;
+}
