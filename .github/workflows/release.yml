@@ -32,10 +32,10 @@ jobs:
       - name: Configuring Git
         run: git config --global user.name "GitHub CD bot" && git config --global user.email "github-cd-bot@users.noreply.github.com"
       - name: Update package version
-        run: pnpm --no-git-tag-version version ${{ github.event.release.tag_name }}
+        run: pnpm --no-git-tag-version version ${GITHUB_REF_NAME#v}
       - name: Publish package to NPM
         run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Push changes to GitHub
-        run: git commit -am "Release ${{ github.event.release.tag_name }}" && git push origin HEAD:main
+        run: git commit -am "Release ${GITHUB_REF_NAME}" && git push origin HEAD:main
