@@ -1,5 +1,59 @@
 # Changelog
 
+## v2.1.0
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.3...v2.1.0)
+
+### 🚀 Enhancements
+
+- Add module option to control css inclusion ([917e22b](https://github.com/marr/nuxt-maplibre/commit/917e22b))
+- Support string array to match behavior of `css` within `nuxt.config` ([8c8f35f](https://github.com/marr/nuxt-maplibre/commit/8c8f35f))
+
+### 🩹 Fixes
+
+- Add default map style ([e109874](https://github.com/marr/nuxt-maplibre/commit/e109874))
+- Update component list ([d2061c6](https://github.com/marr/nuxt-maplibre/commit/d2061c6))
+- Remove useLayer composable export ([0c74898](https://github.com/marr/nuxt-maplibre/commit/0c74898))
+- Add configuration link to sidebar ([3f0bc7a](https://github.com/marr/nuxt-maplibre/commit/3f0bc7a))
+- Match how other pages refer to the module ([f1d7cdf](https://github.com/marr/nuxt-maplibre/commit/f1d7cdf))
+- Handle array scenario ([ca34d41](https://github.com/marr/nuxt-maplibre/commit/ca34d41))
+
+### 💅 Refactors
+
+- Rename installation and usage pages to retain order in preparation for configuration page ([a129e00](https://github.com/marr/nuxt-maplibre/commit/a129e00))
+- Remove nuxt config style file name ([dac6e8b](https://github.com/marr/nuxt-maplibre/commit/dac6e8b))
+
+### 📖 Documentation
+
+- Add documentation page for module configuration ([fe1edba](https://github.com/marr/nuxt-maplibre/commit/fe1edba))
+
+### 🏡 Chore
+
+- Update dependencies ([5d74fd9](https://github.com/marr/nuxt-maplibre/commit/5d74fd9))
+- **release:** V2.0.3 ([560091d](https://github.com/marr/nuxt-maplibre/commit/560091d))
+- Merge ([f43ce30](https://github.com/marr/nuxt-maplibre/commit/f43ce30))
+- Update dependencies and config ([0b51068](https://github.com/marr/nuxt-maplibre/commit/0b51068))
+- Lint ([178d6ca](https://github.com/marr/nuxt-maplibre/commit/178d6ca))
+- **release:** V2.0.4 ([bf6d4c0](https://github.com/marr/nuxt-maplibre/commit/bf6d4c0))
+- **release:** V2.0.5 ([9974953](https://github.com/marr/nuxt-maplibre/commit/9974953))
+- Package.json repo links ([820b35f](https://github.com/marr/nuxt-maplibre/commit/820b35f))
+- Fix package.json ([53967c9](https://github.com/marr/nuxt-maplibre/commit/53967c9))
+- Release v1.2.2 ([04a28c6](https://github.com/marr/nuxt-maplibre/commit/04a28c6))
+- Disable release ci ([6cad227](https://github.com/marr/nuxt-maplibre/commit/6cad227))
+
+### 🤖 CI
+
+- Remove lint check ([76dc15a](https://github.com/marr/nuxt-maplibre/commit/76dc15a))
+- Put back lint ([c8f59dc](https://github.com/marr/nuxt-maplibre/commit/c8f59dc))
+- Update node version ([2734cc7](https://github.com/marr/nuxt-maplibre/commit/2734cc7))
+- Fix node version and remove npm token ([c7b29a8](https://github.com/marr/nuxt-maplibre/commit/c7b29a8))
+
+### ❤️ Contributors
+
+- Gugustinette <mercier.augustin@outlook.fr>
+- Evelyn Mawrey ([@evemawrey](https://github.com/evemawrey))
+- David Marr <dave.marr@gmail.com>
+
 ## v2.0.5
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.3...v2.0.5)
