@@ -71,8 +71,8 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.vite.resolve ??= {}
     const alias = nuxt.options.vite.resolve.alias ??= {}
     if (typeof alias === 'object' && !Array.isArray(alias)) {
-      (alias as Record<string, string>)['@indoorequal/vue-maplibre-gl'] =
-        '@indoorequal/vue-maplibre-gl/dist/vue-maplibre-gl.es.js'
+      (alias as Record<string, string>)['@indoorequal/vue-maplibre-gl']
+        = '@indoorequal/vue-maplibre-gl/dist/vue-maplibre-gl.es.js'
     }
 
     // Auto-import vue-maplibre-gl components
