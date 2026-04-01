@@ -69,7 +69,8 @@
     "vitest": "^4.1.2",
     "vue-tsc": "^3.2.6"
   },
+  "packageManager": "pnpm@10.33.0",
   "peerDependencies": {
-    "nuxt": "^3.0.0 || ^4.0.0"
+    "nuxt": ">=3.0.0"
   }
 }
