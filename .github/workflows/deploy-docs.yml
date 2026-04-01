@@ -1,5 +1,3 @@
-# Sample workflow for building and deploying a VitePress site to GitHub Pages
-#
 name: Deploy VitePress site to Pages
 
 on:
@@ -7,27 +5,20 @@ on:
     branches: [main]
     paths:
       - 'package.json'
-      - 'package-lock.json'
+      - 'pnpm-lock.yaml'
       - 'docs/**'
-
-  # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: pages
   cancel-in-progress: false
 
-
 jobs:
-  # Build job
   build:
     env:
       NUXT_PUBLIC_MAP_TILER_KEY: ${{ vars.NUXT_PUBLIC_MAP_TILER_KEY }}
@@ -38,22 +29,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Not needed if lastUpdated is not enabled
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm # or pnpm / yarn
+          cache: pnpm
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Setup playground
-        run: npm run dev:prepare
+        run: pnpm run dev:prepare
       - name: Build playground
-        run: NUXT_APP_BASE_URL=/nuxt-maplibre/demo npm run demo:generate -- --preset github_pages
+        run: NUXT_APP_BASE_URL=/nuxt-maplibre/demo pnpm run demo:generate -- --preset github_pages
       - name: Build with VitePress
-        run: VITE_BASE_URL=/nuxt-maplibre/ npm run docs:build
+        run: VITE_BASE_URL=/nuxt-maplibre/ pnpm run docs:build
       - name: Make demo directory
         run: mkdir -p docs/.vitepress/dist/demo
       - name: Copy playground to docs
@@ -63,7 +55,6 @@ jobs:
         with:
           path: docs/.vitepress/dist
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
