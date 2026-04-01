@@ -16,4 +16,9 @@ export default defineNuxtConfig({
       googleMapTilesApiKey: ''
     }
   },
+  nitro: {
+    prerender: {
+      ignore: ['/map/map', '/map/map-basic'],
+    },
+  },
 })
