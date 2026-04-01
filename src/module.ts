@@ -66,6 +66,15 @@ export default defineNuxtModule<ModuleOptions>({
     css: 'maplibre-theme/modern.css',
   },
   async setup(options, nuxt) {
+    // @indoorequal/vue-maplibre-gl has no `exports` field,
+    // so Vite resolves `main` (UMD) instead of the ESM build.
+    nuxt.options.vite.resolve ??= {}
+    const alias = nuxt.options.vite.resolve.alias ??= {}
+    if (typeof alias === 'object' && !Array.isArray(alias)) {
+      (alias as Record<string, string>)['@indoorequal/vue-maplibre-gl'] =
+        '@indoorequal/vue-maplibre-gl/dist/vue-maplibre-gl.es.js'
+    }
+
     // Auto-import vue-maplibre-gl components
     for (const component of components) {
       addComponent({
