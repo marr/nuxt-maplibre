@@ -12,6 +12,8 @@ It was made using [vue-maplibre-gl](https://indoorequal.github.io/vue-maplibre-g
 
 This module is really just about making it work with Nuxt without the need to configure anything.
 
+> Fork of [Gugustinette/nuxt-maplibre](https://github.com/Gugustinette/nuxt-maplibre) with additional features and improvements.
+
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 - [📖 &nbsp;Documentation](https://marr.github.io/nuxt-maplibre)
 
@@ -20,6 +22,8 @@ This module is really just about making it work with Nuxt without the need to co
 - ⚡ &nbsp;No configuration needed
 - 🦺 &nbsp;Typescript support
 - 🚠 &nbsp;Auto import
+- 🎨 &nbsp;Configurable CSS (maplibre-theme by default, with opt-out support)
+- 🗺️ &nbsp;Google Maps tiles support
 
 ## Quick Setup
 
@@ -47,36 +51,52 @@ For a complete list of the components available, check out the [vue-maplibre-gl 
 </template>
 
 <script setup>
-const style = 'https://api.maptiler.com/maps/streets/style.json?key=mWnHmcL4ekj6wks9iCeV';
-const center = [-71.058, 42.357];
-const zoom = 14;
+const style = 'https://demotiles.maplibre.org/style.json';
+const center = [-1.559482, 47.21322];
+const zoom = 8;
 </script>
+```
+
+### Configuration
+
+By default, the module uses `maplibre-theme/modern.css` for a modern look. You can customize this in `nuxt.config`:
+
+```ts
+export default defineNuxtConfig({
+  modules: ["@dmarr/nuxt-maplibre"],
+  maplibre: {
+    // Use maplibre-gl's default styles instead
+    css: 'maplibre-gl/dist/maplibre-gl.css',
+    // Or disable CSS injection entirely
+    // css: false,
+  },
+});
 ```
 
 ## Development
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Generate type stubs
-npm run dev:prepare
+pnpm run dev:prepare
 
 # Develop with the playground
-npm run dev
+pnpm run dev
 
 # Build the playground
-npm run dev:build
+pnpm run dev:build
 
 # Run ESLint
-npm run lint
+pnpm run lint
 
 # Run Vitest
-npm run test
-npm run test:watch
+pnpm run test
+pnpm run test:watch
 
 # Release new version
-npm run release
+pnpm run release
 ```
 
 <!-- Badges -->

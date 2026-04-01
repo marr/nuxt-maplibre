@@ -6,32 +6,37 @@ import {
 } from '@nuxt/kit'
 
 // Module options TypeScript interface definition
-// eslint-disable-next-line
-export interface ModuleOptions {}
+export interface ModuleOptions {
+  css: string | string[] | false
+}
 
 // Components to export
 export const components = [
+  'MglImage',
   'MglMap',
+  'MglMarker',
+  'MglPopup',
+  // Controls
   'MglAttributionControl',
   'MglCustomControl',
   'MglFullscreenControl',
   'MglGeolocateControl',
+  'MglLogoControl',
   'MglNavigationControl',
   'MglScaleControl',
-  'MglLogoControl',
-  'MglMarker',
-  'MglPopup',
+  // Sources
   'MglCanvasSource',
   'MglGeoJsonSource',
   'MglImageSource',
-  'MglRasterSource',
   'MglRasterDemSource',
+  'MglRasterSource',
   'MglVectorSource',
   'MglVideoSource',
+  // Layers
   'MglBackgroundLayer',
   'MglCircleLayer',
-  'MglFillLayer',
   'MglFillExtrusionLayer',
+  'MglFillLayer',
   'MglHeatmapLayer',
   'MglHillshadeLayer',
   'MglLineLayer',
@@ -44,7 +49,6 @@ export const composables = [
   'useMap',
   'useControl',
   'useDisposableLayer',
-  'useLayer',
   'usePositionWatcher',
   'useSource',
 ]
@@ -58,7 +62,9 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
+  defaults: {
+    css: 'maplibre-theme/modern.css',
+  },
   async setup(options, nuxt) {
     // Auto-import vue-maplibre-gl components
     for (const component of components) {
@@ -80,21 +86,24 @@ export default defineNuxtModule<ModuleOptions>({
       })
     }
 
+    // Always inject the lucide icon CSS variable template
     const template = addTemplate({
       filename: 'assets/styles.css',
       getContents: () => {
         return `.maplibregl-map {
-          --ml-font-icons: maplibregl-icons-lucide;
-        }`
+  --ml-font-icons: maplibregl-icons-lucide;
+}`
       },
     })
+    nuxt.options.css.push(template.dst)
 
-    // Add CSS using mapblibre-theme. It is much smaller than maplibre-gl.css
-    // and has a more modern look. Add the change needed to use lucide icons.
-    nuxt.options.css.push(
-      'maplibre-theme/icons.lucide.css',
-      'maplibre-theme/modern.css',
-      template.dst,
-    )
+    // Add CSS stylesheets if not disabled
+    if (options.css) {
+      const cssEntries = Array.isArray(options.css) ? options.css : [options.css]
+      nuxt.options.css.push(
+        'maplibre-theme/icons.lucide.css',
+        ...cssEntries,
+      )
+    }
   },
 })

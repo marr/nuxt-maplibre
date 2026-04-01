@@ -27,9 +27,9 @@ This is only possible in a client-side environment. You should either :
 </template>
 
 <script setup>
-const style = 'https://api.maptiler.com/maps/streets/style.json?key=Hh5AnbYfYsClowgwFsTl';
-const center = [-71.058, 42.357];
-const zoom = 14;
+const style = 'https://demotiles.maplibre.org/style.json';
+const center = [-1.559482, 47.21322];
+const zoom = 8;
 </script>
 ```
 
@@ -45,9 +45,9 @@ const MglNavigationControl = defineClientComponent(() => {
   return import('@indoorequal/vue-maplibre-gl').then(m => m.MglNavigationControl)
 })
 
-const style = 'https://api.maptiler.com/maps/streets/style.json?key=Hh5AnbYfYsClowgwFsTl';
-const center = [-71.058, 42.357];
-const zoom = 14;
+const style = 'https://demotiles.maplibre.org/style.json';
+const center = [-1.559482, 47.21322];
+const zoom = 8;
 </script>
 
 <MglMap

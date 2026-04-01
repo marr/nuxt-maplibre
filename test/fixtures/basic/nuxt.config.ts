@@ -1,5 +1,9 @@
+import NuxtMaplibre from '../../../src/module'
+
 export default defineNuxtConfig({
-  modules: ['../../../src/module'],
+  modules: [
+    NuxtMaplibre,
+  ],
   ssr: false,
   compatibilityDate: '2025-05-14',
 })
