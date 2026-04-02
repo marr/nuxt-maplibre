@@ -27,13 +27,13 @@ This is only possible in a client-side environment. You should either :
 </template>
 
 <script setup>
-const style = 'https://demotiles.maplibre.org/style.json';
-const center = [-1.559482, 47.21322];
-const zoom = 8;
+const style = 'https://tiles.openfreemap.org/styles/liberty';
+const center = [13.388, 52.517];
+const zoom = 9.5;
 </script>
 ```
 
-You can also use OpenFreeMap styles directly:
+You can also use another OpenFreeMap style:
 
 ```ts
 const style = 'https://tiles.openfreemap.org/styles/liberty'
@@ -52,9 +52,9 @@ const MglNavigationControl = defineClientComponent(() => {
   return import('@indoorequal/vue-maplibre-gl').then(m => m.MglNavigationControl)
 })
 
-const style = 'https://demotiles.maplibre.org/style.json';
-const center = [-1.559482, 47.21322];
-const zoom = 8;
+const style = 'https://tiles.openfreemap.org/styles/liberty';
+const center = [13.388, 52.517];
+const zoom = 9.5;
 </script>
 
 <MglMap
