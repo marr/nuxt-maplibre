@@ -33,6 +33,13 @@ const zoom = 8;
 </script>
 ```
 
+You can also use OpenFreeMap styles directly:
+
+```ts
+const style = 'https://tiles.openfreemap.org/styles/liberty'
+// or: 'https://tiles.openfreemap.org/styles/bright'
+```
+
 And here is how it should look :
 
 <script setup>

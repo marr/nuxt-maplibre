@@ -63,6 +63,18 @@ export function useMapStyle() {
       icon: 'i-simple-icons-maplibre',
       style: 'https://demotiles.maplibre.org/style.json',
     },
+    {
+      key: 'openfreemap-liberty',
+      label: 'OpenFreeMap Liberty',
+      icon: 'i-lucide-map',
+      style: 'https://tiles.openfreemap.org/styles/liberty',
+    },
+    {
+      key: 'openfreemap-bright',
+      label: 'OpenFreeMap Bright',
+      icon: 'i-lucide-map',
+      style: 'https://tiles.openfreemap.org/styles/bright',
+    },
   ]
 
   const selectedKey = useState('map-style-key', () => 'streets')
