@@ -54,3 +54,8 @@
 .maplibregl-map {
   --ml-font-icons: maplibregl-icons-lucide;
 }
+
+/* Prevent VitePress markdown summary spacing from shifting MapLibre attribution icon. */
+.vp-doc .maplibregl-ctrl-attrib summary.maplibregl-ctrl-attrib-button {
+  margin: 0;
+}
