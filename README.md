@@ -24,6 +24,7 @@ This module is really just about making it work with Nuxt without the need to co
 - 🚠 &nbsp;Auto import
 - 🎨 &nbsp;Configurable CSS (maplibre-theme by default, with opt-out support)
 - 🗺️ &nbsp;Google Maps tiles support
+- 🌍 &nbsp;OpenFreeMap style support
 
 ## Quick Setup
 
@@ -55,6 +56,15 @@ const style = 'https://demotiles.maplibre.org/style.json';
 const center = [-1.559482, 47.21322];
 const zoom = 8;
 </script>
+```
+
+### OpenFreeMap
+
+OpenFreeMap styles work out of the box with `MglMap`:
+
+```ts
+const style = 'https://tiles.openfreemap.org/styles/liberty'
+// or: 'https://tiles.openfreemap.org/styles/bright'
 ```
 
 ### Configuration
