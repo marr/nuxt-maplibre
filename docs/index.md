@@ -17,7 +17,7 @@ hero:
       link: /components/introduction
     - theme: alt
       text: Demo
-      link: /demo
+      link: https://marr.github.io/nuxt-maplibre/demo/
       target: _self
 
 features:

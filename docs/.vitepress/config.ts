@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress'
 
+/** Full URL so Demo is a real navigation, not VitePress client routing (static demo under /demo/ 404s in SPA). */
+const demoUrl = 'https://marr.github.io/nuxt-maplibre/demo/'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Nuxt MapLibre",
@@ -13,7 +16,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Quick Start', link: '/getting-started/installation' },
       { text: 'Components', link: '/components/introduction' },
-      { text: 'Demo', link: '/demo', target: '_self' }
+      { text: 'Demo', link: demoUrl, target: '_self' }
     ],
 
     sidebar: [
@@ -23,7 +26,7 @@ export default defineConfig({
           { text: 'Installation', link: '/getting-started/installation' },
           { text: 'Usage', link: '/getting-started/usage' },
           { text: 'Configuration', link: '/getting-started/configuration' },
-          { text: 'Demo', link: '/demo', target: '_self' }
+          { text: 'Demo', link: demoUrl, target: '_self' }
         ]
       },
       {
