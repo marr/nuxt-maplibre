@@ -16,9 +16,9 @@ export default defineNuxtConfig({
       googleMapTilesApiKey: ''
     }
   },
-  nitro: {
-    prerender: {
-      ignore: ['/map/markers', '/map/sources', '/map/controls'],
+  vite: {
+    ssr: {
+      noExternal: ['@indoorequal/vue-maplibre-gl'],
     },
   },
 })
