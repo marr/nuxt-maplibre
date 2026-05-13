@@ -6,10 +6,12 @@ const colorMode = useColorMode()
 
 const center = ref<LngLatLike>([-100, 40])
 const zoom = ref(3)
-const showCircles = ref(true)
-const showLabels = ref(true)
+const visibleLayers = ref(['city-circles', 'city-labels'])
 const circleColor = ref('#03C169')
 const labelColor = ref('#1A73E8')
+
+const showCircles = computed(() => visibleLayers.value.includes('city-circles'))
+const showLabels = computed(() => visibleLayers.value.includes('city-labels'))
 
 const labelPaint = computed(() =>
   ({
@@ -76,17 +78,21 @@ const sourceState = computed(() => ({
 const layerState = computed(() => [
   {
     id: 'city-circles',
+    label: 'city-circles',
+    description: `circle · ${showCircles.value ? 'visible' : 'hidden'}`,
+    value: 'city-circles',
     type: 'circle',
     visible: showCircles.value,
     color: circleColor.value,
-    toggle: () => showCircles.value = !showCircles.value,
   },
   {
     id: 'city-labels',
+    label: 'city-labels',
+    description: `symbol · ${showLabels.value ? 'visible' : 'hidden'}`,
+    value: 'city-labels',
     type: 'symbol',
     visible: showLabels.value,
     color: labelColor.value,
-    toggle: () => showLabels.value = !showLabels.value,
   },
 ])
 </script>
@@ -138,45 +144,43 @@ const layerState = computed(() => [
             <p class="text-xs font-semibold text-(--ui-text-muted) uppercase tracking-wide">
               Layers
             </p>
-            <div class="mt-2 space-y-2">
-              <UButton
-                v-for="layer in layerState"
-                :key="layer.id"
-                :active="layer.visible"
-                active-variant="soft"
-                variant="outline"
-                color="neutral"
-                block
-                class="justify-between"
-                @click="layer.toggle"
-              >
-                <div>
-                  <p class="font-mono text-xs text-(--ui-text-highlighted)">{{ layer.id }}</p>
-                  <p class="text-xs text-(--ui-text-muted)">
-                    {{ layer.type }} · {{ layer.visible ? 'visible' : 'hidden' }}
-                  </p>
-                </div>
+            <UListbox
+              v-model="visibleLayers"
+              :items="layerState"
+              multiple
+              value-key="value"
+              class="mt-2"
+              :ui="{ root: 'ring-default', item: 'cursor-pointer' }"
+            >
+              <template #item-leading="{ item }">
+                <span
+                  class="size-3 rounded-full ring ring-default"
+                  :style="{ backgroundColor: item.color }"
+                />
+              </template>
 
-                <template #trailing>
-                  <label class="flex items-center gap-1 text-xs text-(--ui-text-muted)" @click.stop>
-                    <span class="sr-only">Set {{ layer.id }} color</span>
-                    <input
-                      v-if="layer.id === 'city-circles'"
-                      v-model="circleColor"
-                      type="color"
-                      class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
-                    >
-                    <input
-                      v-else
-                      v-model="labelColor"
-                      type="color"
-                      class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
-                    >
-                    <span class="font-mono">{{ layer.color }}</span>
-                  </label>
-                </template>
-              </UButton>
-            </div>
+              <template #item-label="{ item }">
+                <span class="font-mono text-xs">{{ item.label }}</span>
+              </template>
+
+              <template #item-trailing="{ item }">
+                <label @click.stop @pointerdown.stop>
+                  <span class="sr-only">Set {{ item.label }} color</span>
+                  <input
+                    v-if="item.value === 'city-circles'"
+                    v-model="circleColor"
+                    type="color"
+                    class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
+                  >
+                  <input
+                    v-else
+                    v-model="labelColor"
+                    type="color"
+                    class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
+                  >
+                </label>
+              </template>
+            </UListbox>
           </div>
         </div>
       </MapControl>
