@@ -8,20 +8,23 @@ const center = ref<LngLatLike>([-100, 40])
 const zoom = ref(3)
 const showCircles = ref(true)
 const showLabels = ref(true)
+const circleColor = ref('#03C169')
+const labelColor = ref('#1A73E8')
 
 const labelPaint = computed(() =>
-  colorMode.value === 'dark'
-    ? {
-        'text-color': '#f5f5f5',
-        'text-halo-color': '#1a1a1a',
-        'text-halo-width': 1,
-      }
-    : {
-        'text-color': '#1a1a1a',
-        'text-halo-color': '#ffffff',
-        'text-halo-width': 1,
-      }
+  ({
+    'text-color': labelColor.value,
+    'text-halo-color': colorMode.value === 'dark' ? '#1a1a1a' : '#ffffff',
+    'text-halo-width': 1,
+  })
 )
+
+const circlePaint = computed(() => ({
+  'circle-radius': 8,
+  'circle-color': circleColor.value,
+  'circle-stroke-width': 2,
+  'circle-stroke-color': '#ffffff',
+}))
 
 const circleLayout = computed(() => ({
   visibility: showCircles.value ? 'visible' : 'none',
@@ -75,11 +78,15 @@ const layerState = computed(() => [
     id: 'city-circles',
     type: 'circle',
     visible: showCircles.value,
+    color: circleColor.value,
+    toggle: () => showCircles.value = !showCircles.value,
   },
   {
     id: 'city-labels',
     type: 'symbol',
     visible: showLabels.value,
+    color: labelColor.value,
+    toggle: () => showLabels.value = !showLabels.value,
   },
 ])
 </script>
@@ -95,12 +102,7 @@ const layerState = computed(() => [
       <MglCircleLayer
         layer-id="city-circles"
         :layout="circleLayout"
-        :paint="{
-          'circle-radius': 8,
-          'circle-color': '#03C169',
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#ffffff',
-        }"
+        :paint="circlePaint"
       />
       <MglSymbolLayer
         layer-id="city-labels"
@@ -137,47 +139,44 @@ const layerState = computed(() => [
               Layers
             </p>
             <div class="mt-2 space-y-2">
-              <div
+              <UButton
                 v-for="layer in layerState"
                 :key="layer.id"
-                class="flex items-center justify-between gap-3 rounded-md bg-(--ui-bg-elevated)/70 px-2 py-1.5"
+                :active="layer.visible"
+                active-variant="soft"
+                variant="outline"
+                color="neutral"
+                block
+                class="justify-between"
+                @click="layer.toggle"
               >
                 <div>
                   <p class="font-mono text-xs text-(--ui-text-highlighted)">{{ layer.id }}</p>
-                  <p class="text-xs text-(--ui-text-muted)">{{ layer.type }}</p>
+                  <p class="text-xs text-(--ui-text-muted)">
+                    {{ layer.type }} · {{ layer.visible ? 'visible' : 'hidden' }}
+                  </p>
                 </div>
-                <UBadge
-                  :color="layer.visible ? 'success' : 'neutral'"
-                  variant="soft"
-                  size="sm"
-                >
-                  {{ layer.visible ? 'visible' : 'hidden' }}
-                </UBadge>
-              </div>
-            </div>
-          </div>
 
-          <div class="flex gap-2">
-            <UButton
-              :label="showCircles ? 'Hide circles' : 'Show circles'"
-              :active="showCircles"
-              active-variant="soft"
-              variant="outline"
-              color="primary"
-              size="xs"
-              block
-              @click="showCircles = !showCircles"
-            />
-            <UButton
-              :label="showLabels ? 'Hide labels' : 'Show labels'"
-              :active="showLabels"
-              active-variant="soft"
-              variant="outline"
-              color="primary"
-              size="xs"
-              block
-              @click="showLabels = !showLabels"
-            />
+                <template #trailing>
+                  <label class="flex items-center gap-1 text-xs text-(--ui-text-muted)" @click.stop>
+                    <span class="sr-only">Set {{ layer.id }} color</span>
+                    <input
+                      v-if="layer.id === 'city-circles'"
+                      v-model="circleColor"
+                      type="color"
+                      class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
+                    >
+                    <input
+                      v-else
+                      v-model="labelColor"
+                      type="color"
+                      class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
+                    >
+                    <span class="font-mono">{{ layer.color }}</span>
+                  </label>
+                </template>
+              </UButton>
+            </div>
           </div>
         </div>
       </MapControl>
