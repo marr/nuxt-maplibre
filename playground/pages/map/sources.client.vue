@@ -12,6 +12,8 @@ const labelColor = ref('#1A73E8')
 
 const showCircles = computed(() => visibleLayers.value.includes('city-circles'))
 const showLabels = computed(() => visibleLayers.value.includes('city-labels'))
+const circleColorChip = computed(() => ({ backgroundColor: circleColor.value }))
+const labelColorChip = computed(() => ({ backgroundColor: labelColor.value }))
 
 const labelPaint = computed(() =>
   ({
@@ -151,36 +153,38 @@ const layerState = computed(() => [
               value-key="value"
               class="mt-2"
               :ui="{ root: 'ring-default', item: 'cursor-pointer' }"
-            >
-              <template #item-leading="{ item }">
-                <span
-                  class="size-3 rounded-full ring ring-default"
-                  :style="{ backgroundColor: item.color }"
-                />
-              </template>
+            />
+          </div>
 
-              <template #item-label="{ item }">
-                <span class="font-mono text-xs">{{ item.label }}</span>
-              </template>
+          <div>
+            <p class="text-xs font-semibold text-(--ui-text-muted) uppercase tracking-wide">
+              Colors
+            </p>
+            <div class="mt-2 grid grid-cols-2 gap-2">
+              <UPopover>
+                <UButton label="Circles" color="neutral" variant="outline" size="xs" block>
+                  <template #leading>
+                    <span :style="circleColorChip" class="size-3 rounded-full ring ring-default" />
+                  </template>
+                </UButton>
 
-              <template #item-trailing="{ item }">
-                <label @click.stop @pointerdown.stop>
-                  <span class="sr-only">Set {{ item.label }} color</span>
-                  <input
-                    v-if="item.value === 'city-circles'"
-                    v-model="circleColor"
-                    type="color"
-                    class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
-                  >
-                  <input
-                    v-else
-                    v-model="labelColor"
-                    type="color"
-                    class="size-6 cursor-pointer rounded border border-(--ui-border) bg-transparent p-0"
-                  >
-                </label>
-              </template>
-            </UListbox>
+                <template #content>
+                  <UColorPicker v-model="circleColor" format="hex" size="xs" class="p-2" />
+                </template>
+              </UPopover>
+
+              <UPopover>
+                <UButton label="Labels" color="neutral" variant="outline" size="xs" block>
+                  <template #leading>
+                    <span :style="labelColorChip" class="size-3 rounded-full ring ring-default" />
+                  </template>
+                </UButton>
+
+                <template #content>
+                  <UColorPicker v-model="labelColor" format="hex" size="xs" class="p-2" />
+                </template>
+              </UPopover>
+            </div>
           </div>
         </div>
       </MapControl>
