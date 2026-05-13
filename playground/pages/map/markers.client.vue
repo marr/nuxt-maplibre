@@ -9,14 +9,14 @@ const router = useRouter()
 const defaultMarker: [number, number] = [-70.84961090021761, 42.262697082725936]
 const defaultCenter: [number, number] = [-70.99472213822588, 42.37041979229858]
 
-function parseMarkerQuery(value: unknown): [number, number] | undefined {
-  const rawValue = Array.isArray(value) ? value[0] : value
+function parseMarkerHash(value: string): [number, number] | undefined {
+  const rawValue = value.replace(/^#/, '')
 
-  if (typeof rawValue !== 'string') {
+  if (!rawValue.startsWith('marker=')) {
     return undefined
   }
 
-  const [lat, lng] = rawValue.split(',').map(Number)
+  const [lat, lng] = rawValue.slice('marker='.length).split(',').map(Number)
 
   if (
     Number.isFinite(lat)
@@ -32,22 +32,22 @@ function parseMarkerQuery(value: unknown): [number, number] | undefined {
   return undefined
 }
 
-function formatMarkerQuery(coordinates: LngLatLike) {
+function formatMarkerHash(coordinates: LngLatLike) {
   const { lat, lng } = maplibre.LngLat.convert(coordinates)
 
-  return `${lat.toFixed(5)},${lng.toFixed(5)}`
+  return `#marker=${lat.toFixed(5)},${lng.toFixed(5)}`
 }
 
-const initialMarker = parseMarkerQuery(route.query.marker) ?? defaultMarker
-const center = ref<LngLatLike>(parseMarkerQuery(route.query.marker) ?? defaultCenter)
+const initialMarker = parseMarkerHash(route.hash) ?? defaultMarker
+const center = ref<LngLatLike>(parseMarkerHash(route.hash) ?? defaultCenter)
 const zoom = ref(10)
 const marker = ref<LngLatLike>(initialMarker)
 const draggable = ref(true)
 
 watch(
-  () => route.query.marker,
+  () => route.hash,
   (value) => {
-    const nextMarker = parseMarkerQuery(value)
+    const nextMarker = parseMarkerHash(value)
 
     if (!nextMarker) {
       return
@@ -59,17 +59,16 @@ watch(
 )
 
 watch(
-  () => formatMarkerQuery(marker.value),
-  async (markerQuery) => {
-    if (route.query.marker === markerQuery) {
+  () => formatMarkerHash(marker.value),
+  async (markerHash) => {
+    if (route.hash === markerHash) {
       return
     }
 
     await router.replace({
-      query: {
-        ...route.query,
-        marker: markerQuery,
-      },
+      path: route.path,
+      query: route.query,
+      hash: markerHash,
     })
   },
 )
