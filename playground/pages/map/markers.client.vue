@@ -54,7 +54,6 @@ watch(
     }
 
     marker.value = nextMarker
-    center.value = nextMarker
   },
 )
 
