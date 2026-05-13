@@ -1,15 +1,22 @@
 <script setup lang="ts">
-import { useRouteQuery } from '@vueuse/router'
 import maplibre from 'maplibre-gl'
 import type { LngLatLike } from 'maplibre-gl'
 
 const { current } = useMapStyle()
+const route = useRoute()
+const router = useRouter()
 
 const defaultMarker: [number, number] = [-70.84961090021761, 42.262697082725936]
 const defaultCenter: [number, number] = [-70.99472213822588, 42.37041979229858]
 
-function parseMarkerQuery(value: string): [number, number] | undefined {
-  const [lat, lng] = value.split(',').map(Number)
+function parseMarkerQuery(value: unknown): [number, number] | undefined {
+  const rawValue = Array.isArray(value) ? value[0] : value
+
+  if (typeof rawValue !== 'string') {
+    return undefined
+  }
+
+  const [lat, lng] = rawValue.split(',').map(Number)
 
   if (
     Number.isFinite(lat)
@@ -31,46 +38,39 @@ function formatMarkerQuery(coordinates: LngLatLike) {
   return `${lat.toFixed(5)},${lng.toFixed(5)}`
 }
 
-const markerQuery = useRouteQuery<string, [number, number] | undefined>('marker', '', {
-  transform: {
-    get: parseMarkerQuery,
-    set: value => value ? formatMarkerQuery(value) : '',
-  },
-})
-
-const initialMarker = markerQuery.value ?? defaultMarker
-const center = ref<LngLatLike>(markerQuery.value ?? defaultCenter)
+const initialMarker = parseMarkerQuery(route.query.marker) ?? defaultMarker
+const center = ref<LngLatLike>(parseMarkerQuery(route.query.marker) ?? defaultCenter)
 const zoom = ref(10)
 const marker = ref<LngLatLike>(initialMarker)
 const draggable = ref(true)
 
 watch(
-  markerQuery,
-  (coordinates) => {
-    if (!coordinates) {
+  () => route.query.marker,
+  (value) => {
+    const nextMarker = parseMarkerQuery(value)
+
+    if (!nextMarker) {
       return
     }
 
-    marker.value = coordinates
-    center.value = coordinates
+    marker.value = nextMarker
+    center.value = nextMarker
   },
 )
 
 watch(
   () => formatMarkerQuery(marker.value),
-  () => {
-    const coordinates = maplibre.LngLat.convert(marker.value)
-    const nextMarker: [number, number] = [coordinates.lng, coordinates.lat]
-
-    if (
-      markerQuery.value
-      && markerQuery.value[0] === nextMarker[0]
-      && markerQuery.value[1] === nextMarker[1]
-    ) {
+  async (markerQuery) => {
+    if (route.query.marker === markerQuery) {
       return
     }
 
-    markerQuery.value = nextMarker
+    await router.replace({
+      query: {
+        ...route.query,
+        marker: markerQuery,
+      },
+    })
   },
 )
 </script>
