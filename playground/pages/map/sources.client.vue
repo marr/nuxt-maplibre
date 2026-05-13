@@ -160,7 +160,9 @@ const layerState = computed(() => [
           <div class="flex gap-2">
             <UButton
               :label="showCircles ? 'Hide circles' : 'Show circles'"
-              :variant="showCircles ? 'soft' : 'outline'"
+              :active="showCircles"
+              active-variant="soft"
+              variant="outline"
               color="primary"
               size="xs"
               block
@@ -168,7 +170,9 @@ const layerState = computed(() => [
             />
             <UButton
               :label="showLabels ? 'Hide labels' : 'Show labels'"
-              :variant="showLabels ? 'soft' : 'outline'"
+              :active="showLabels"
+              active-variant="soft"
+              variant="outline"
               color="primary"
               size="xs"
               block
