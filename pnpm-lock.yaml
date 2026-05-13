@@ -11,6 +11,9 @@ importers:
       '@indoorequal/vue-maplibre-gl':
         specifier: ^8.4.2
         version: 8.4.2(maplibre-gl@5.21.1)(vue@3.5.31(typescript@6.0.2))
+      '@vueuse/router':
+        specifier: ^14.3.0
+        version: 14.3.0(vue-router@5.0.4(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2)))(vue@3.5.31(typescript@6.0.2))
       lucide-vue-next:
         specifier: ^1.0.0
         version: 1.0.0(vue@3.5.31(typescript@6.0.2))
@@ -2908,6 +2911,12 @@ packages:
   '@vueuse/metadata@14.2.1':
     resolution: {integrity: sha512-1ButlVtj5Sb/HDtIy1HFr1VqCP4G6Ypqt5MAo0lCgjokrk2mvQKsK2uuy0vqu/Ks+sHfuHo0B9Y9jn9xKdjZsw==}
 
+  '@vueuse/router@14.3.0':
+    resolution: {integrity: sha512-MK7YETFDPyDDF9aSP4W3TzUIHLZ+uq0n/t4VMxOP39e0qGbCZ21ZRsGE93ML84teKtCtPDlN+73CTk2e3xVl9w==}
+    peerDependencies:
+      vue: ^3.5.0
+      vue-router: ^4.0.0 || ^5.0.0
+
   '@vueuse/shared@10.11.1':
     resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
 
@@ -2916,6 +2925,11 @@ packages:
 
   '@vueuse/shared@14.2.1':
     resolution: {integrity: sha512-shTJncjV9JTI4oVNyF1FQonetYAiTBd+Qj7cY89SWbXSkx7gyhrgtEdF2ZAVWS1S3SHlaROO6F2IesJxQEkZBw==}
+    peerDependencies:
+      vue: ^3.5.0
+
+  '@vueuse/shared@14.3.0':
+    resolution: {integrity: sha512-bZpge9eSXwa4ToSiqJ7j6KRwhAsneMFoSz3LMWKQDkqimm3D/tbFlrklrs/IOqC8tEcYmXQZJ6N0UrjhBirVCg==}
     peerDependencies:
       vue: ^3.5.0
 
@@ -9409,6 +9423,12 @@ snapshots:
 
   '@vueuse/metadata@14.2.1': {}
 
+  '@vueuse/router@14.3.0(vue-router@5.0.4(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2)))(vue@3.5.31(typescript@6.0.2))':
+    dependencies:
+      '@vueuse/shared': 14.3.0(vue@3.5.31(typescript@6.0.2))
+      vue: 3.5.31(typescript@6.0.2)
+      vue-router: 5.0.4(@vue/compiler-sfc@3.5.31)(vue@3.5.31(typescript@6.0.2))
+
   '@vueuse/shared@10.11.1(vue@3.5.31(typescript@6.0.2))':
     dependencies:
       vue-demi: 0.14.10(vue@3.5.31(typescript@6.0.2))
@@ -9423,6 +9443,10 @@ snapshots:
       - typescript
 
   '@vueuse/shared@14.2.1(vue@3.5.31(typescript@6.0.2))':
+    dependencies:
+      vue: 3.5.31(typescript@6.0.2)
+
+  '@vueuse/shared@14.3.0(vue@3.5.31(typescript@6.0.2))':
     dependencies:
       vue: 3.5.31(typescript@6.0.2)
 
