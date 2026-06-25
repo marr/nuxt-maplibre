@@ -2,7 +2,7 @@
 import type { ExpressionSpecification, LngLatLike, PropertyValueSpecification } from 'maplibre-gl'
 
 const { current } = useMapStyle()
-const colorMode = useColorMode()
+const colorMode = useResolvedColorMode()
 
 const center = ref<LngLatLike>([-100, 40])
 const zoom = ref(3)

@@ -4,17 +4,39 @@
   --font-sans: 'Public Sans', sans-serif;
 }
 .maplibregl-map {
-  --ml-c-bg-1: var(--ui-bg-elevated);
   --playground-map-ring-opacity: 0.4;
+}
+
+html:not(.dark) .maplibregl-map {
+  --ml-c-bg-1: var(--ui-bg-elevated);
+}
+
+/*
+ * Dark basemaps need light control chrome for contrast. Keep native MapLibre
+ * controls on the default light palette instead of following UI background.
+ */
+.dark .maplibregl-map {
+  --ml-c-bg-1: #ffffff;
+  --ml-c-bg-2: #f0f0f0;
+  --ml-c-bg-3: #d7d7d7;
+  --ml-c-icon-1: #333333;
+  --ml-c-icon-2: #000000;
+  --ml-c-link-1: #333333;
+  --ml-c-link-2: #000000;
 }
 
 /*
  * Controls demo: MapLibre wordmark uses --ml-c-logo-*; align with app text so it
  * stays legible on bright basemaps (theme defaults can look “inverted” on light tiles).
  */
-.playground-controls-map .maplibregl-map {
+html:not(.dark) .playground-controls-map .maplibregl-map {
   --ml-c-logo-1: var(--ui-text-muted);
   --ml-c-logo-2: var(--ui-text-highlighted);
+}
+
+.dark .playground-controls-map .maplibregl-map {
+  --ml-c-logo-1: #666666;
+  --ml-c-logo-2: #1a1a1a;
 }
 
 .playground-controls-map .maplibregl-map a.maplibregl-ctrl-logo:before {
@@ -24,7 +46,6 @@
 
 /*
  * Map overlays: rings/outlines should contrast with basemap tiles, not UI chrome.
- * --ml-c-bg-1 follows the dashboard background and becomes dark in dark mode.
  */
 .maplibregl-map .maplibregl-user-location-dot {
   isolation: isolate;
