@@ -21,6 +21,14 @@
   text-stroke: 0;
 }
 
+/*
+ * Controls demo: geolocate user dot ring follows --ml-c-bg-1 (UI chrome), which is
+ * dark in dark mode and hard to see on dark basemaps — invert to match text color.
+ */
+.playground-controls-map .maplibregl-map .maplibregl-user-location-dot:after {
+  border-color: var(--ui-text-highlighted);
+}
+
 /* Custom marker popup: card supplies its own chrome; drop default shell padding/shadow */
 .playground-marker-popup .maplibregl-popup-content {
   padding: 0;
