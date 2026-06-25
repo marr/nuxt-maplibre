@@ -5,6 +5,7 @@
 }
 .maplibregl-map {
   --ml-c-bg-1: var(--ui-bg-elevated);
+  --playground-map-ring-opacity: 0.4;
 }
 
 /*
@@ -26,12 +27,17 @@
  * --ml-c-bg-1 follows the dashboard background and becomes dark in dark mode.
  */
 .maplibregl-map .maplibregl-user-location-dot:after {
-  border-color: var(--ui-text-highlighted);
+  border-color: color-mix(
+    in oklab,
+    var(--ui-text-highlighted) calc(var(--playground-map-ring-opacity) * 100%),
+    transparent
+  );
 }
 
-/* Default MapLibre marker pin outline is always black */
+/* Default MapLibre marker pin outline is always black at 25% opacity */
 .dark .maplibregl-marker svg g[opacity="0.25"] {
   fill: #ffffff;
+  opacity: var(--playground-map-ring-opacity);
 }
 
 /* Custom marker popup: card supplies its own chrome; drop default shell padding/shadow */
