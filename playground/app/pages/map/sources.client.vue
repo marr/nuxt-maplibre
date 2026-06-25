@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LngLatLike } from 'maplibre-gl'
+import type { ExpressionSpecification, LngLatLike, PropertyValueSpecification } from 'maplibre-gl'
 
 const { current } = useMapStyle()
 const colorMode = useColorMode()
@@ -31,17 +31,17 @@ const circlePaint = computed(() => ({
 }))
 
 const circleLayout = computed(() => ({
-  visibility: showCircles.value ? 'visible' : 'none',
+  visibility: (showCircles.value ? 'visible' : 'none') as 'visible' | 'none',
 }))
 
 const labelLayout = computed(() => ({
-  'text-field': ['get', 'name'],
-  'text-anchor': 'top',
-  'text-offset': [0, 1.5],
+  'text-field': ['get', 'name'] as ExpressionSpecification,
+  'text-anchor': 'top' as const,
+  'text-offset': [0, 1.5] as PropertyValueSpecification<[number, number]>,
   'text-size': 12,
   'text-allow-overlap': true,
   'text-ignore-placement': true,
-  visibility: showLabels.value ? 'visible' : 'none',
+  visibility: (showLabels.value ? 'visible' : 'none') as 'visible' | 'none',
 }))
 
 const geojson: GeoJSON.FeatureCollection = {
@@ -86,7 +86,6 @@ const layerState = computed(() => [
     label: 'city-circles',
     description: `circle · ${showCircles.value ? 'visible' : 'hidden'}`,
     value: 'city-circles',
-    type: 'circle',
     visible: showCircles.value,
     color: circleColor.value,
   },
@@ -95,7 +94,6 @@ const layerState = computed(() => [
     label: 'city-labels',
     description: `symbol · ${showLabels.value ? 'visible' : 'hidden'}`,
     value: 'city-labels',
-    type: 'symbol',
     visible: showLabels.value,
     color: labelColor.value,
   },
