@@ -22,11 +22,16 @@
 }
 
 /*
- * Controls demo: geolocate user dot ring follows --ml-c-bg-1 (UI chrome), which is
- * dark in dark mode and hard to see on dark basemaps — invert to match text color.
+ * Map overlays: rings/outlines should contrast with basemap tiles, not UI chrome.
+ * --ml-c-bg-1 follows the dashboard background and becomes dark in dark mode.
  */
-.playground-controls-map .maplibregl-map .maplibregl-user-location-dot:after {
+.maplibregl-map .maplibregl-user-location-dot:after {
   border-color: var(--ui-text-highlighted);
+}
+
+/* Default MapLibre marker pin outline is always black */
+.dark .maplibregl-marker svg g[opacity="0.25"] {
+  fill: #ffffff;
 }
 
 /* Custom marker popup: card supplies its own chrome; drop default shell padding/shadow */
