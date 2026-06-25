@@ -14,12 +14,13 @@ const props = withDefaults(
 const point = computed(() => maplibre.LngLat.convert(props.coordinates))
 const latStr = computed(() => point.value.lat.toFixed(5))
 const lngStr = computed(() => point.value.lng.toFixed(5))
+const colorMode = useResolvedColorMode()
 </script>
 
 <template>
   <UCard
     variant="subtle"
-    class="light w-64"
+    :class="['w-64', colorMode === 'dark' && 'light']"
     :ui="{
       root: 'rounded-xl overflow-visible shadow-lg',
       header: 'p-3 sm:p-3',
