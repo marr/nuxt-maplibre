@@ -4,9 +4,7 @@ const { current } = useMapStyle()
 <template>
   <div class="playground-controls-map h-full min-h-[50vh] w-full">
     <MglMap
-      class="h-full min-h-[50vh] w-full"
       :map-style="current.style"
-      :center="[0, 20]"
       :zoom="2"
       :attribution-control="{ compact: true }"
     >
