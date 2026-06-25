@@ -11,7 +11,7 @@ const labelPaint = computed(() =>
   colorMode.value === 'dark'
     ? {
         'text-color': '#f5f5f5',
-        'text-halo-color': '#1a1a1a',
+        'text-halo-color': '#ffffff',
         'text-halo-width': 1,
       }
     : {
@@ -20,6 +20,13 @@ const labelPaint = computed(() =>
         'text-halo-width': 1,
       }
 )
+
+const circlePaint = computed(() => ({
+  'circle-radius': 8,
+  'circle-color': '#03C169',
+  'circle-stroke-width': 2,
+  'circle-stroke-color': colorMode.value === 'dark' ? '#ffffff' : '#1a1a1a',
+}))
 
 const geojson: GeoJSON.FeatureCollection = {
   type: 'FeatureCollection',
@@ -62,12 +69,7 @@ const geojson: GeoJSON.FeatureCollection = {
     <MglGeoJsonSource :data="geojson" source-id="cities">
       <MglCircleLayer
         layer-id="city-circles"
-        :paint="{
-          'circle-radius': 8,
-          'circle-color': '#03C169',
-          'circle-stroke-width': 2,
-          'circle-stroke-color': '#ffffff',
-        }"
+        :paint="circlePaint"
       />
       <MglSymbolLayer
         layer-id="city-labels"
