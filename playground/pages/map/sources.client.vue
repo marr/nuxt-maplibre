@@ -7,17 +7,21 @@ const colorMode = useColorMode()
 const center = ref<LngLatLike>([-100, 40])
 const zoom = ref(3)
 
+const ringOpacity = 0.4
+
 const labelPaint = computed(() =>
   colorMode.value === 'dark'
     ? {
         'text-color': '#f5f5f5',
         'text-halo-color': '#ffffff',
         'text-halo-width': 1,
+        'text-halo-opacity': ringOpacity,
       }
     : {
         'text-color': '#1a1a1a',
         'text-halo-color': '#ffffff',
         'text-halo-width': 1,
+        'text-halo-opacity': ringOpacity,
       }
 )
 
@@ -26,6 +30,7 @@ const circlePaint = computed(() => ({
   'circle-color': '#03C169',
   'circle-stroke-width': 2,
   'circle-stroke-color': colorMode.value === 'dark' ? '#ffffff' : '#1a1a1a',
+  'circle-stroke-opacity': ringOpacity,
 }))
 
 const geojson: GeoJSON.FeatureCollection = {
