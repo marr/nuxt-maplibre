@@ -3,6 +3,7 @@
 @theme {
   --font-sans: 'Public Sans', sans-serif;
 }
+
 .maplibregl-map {
   --ml-c-bg-1: var(--ui-bg-elevated);
   --playground-map-ring-opacity: 0.4;
