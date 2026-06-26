@@ -4,14 +4,6 @@
   --font-sans: 'Public Sans', sans-serif;
 }
 
-/* Full-bleed maps inside the dashboard panel (below mobile/tablet navbar). */
-.playground-map-host,
-.playground-map-host > *,
-.playground-map-host .maplibregl-map {
-  height: 100%;
-  min-height: 0;
-}
-
 .maplibregl-map {
   --ml-c-bg-1: var(--ui-bg-elevated);
   --playground-map-ring-opacity: 0.4;

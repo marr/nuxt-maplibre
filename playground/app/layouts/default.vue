@@ -62,10 +62,7 @@ const { styles, selectedKey } = useMapStyle()
       </template>
     </UDashboardSidebar>
 
-    <UDashboardPanel
-      id="playground-main"
-      :ui="{ body: 'flex flex-1 flex-col min-h-0 overflow-hidden p-0' }"
-    >
+    <UDashboardPanel id="playground-main">
       <template #header>
         <UDashboardNavbar
           :title="currentPage.label"
@@ -74,7 +71,7 @@ const { styles, selectedKey } = useMapStyle()
       </template>
 
       <template #body>
-        <div class="playground-map-host relative min-h-0 flex-1 w-full">
+        <div class="flex-1 min-h-0 [&>*]:h-full [&>*]:min-h-0">
           <slot />
         </div>
       </template>
