@@ -2,7 +2,7 @@
 const { current } = useMapStyle()
 </script>
 <template>
-  <div class="playground-controls-map h-full min-h-[50vh] w-full">
+  <div class="playground-controls-map h-full w-full">
     <MglMap
       :map-style="current.style"
       :zoom="2"

@@ -8,6 +8,9 @@ const pages: NavigationMenuItem[] = [
   { label: 'Controls', icon: 'i-lucide-sliders-horizontal', to: '/map/controls' },
 ]
 
+const route = useRoute()
+const currentPage = computed(() => pages.find(page => page.to === route.path) ?? pages[0])
+
 const { styles, selectedKey } = useMapStyle()
 </script>
 <template>
@@ -19,6 +22,7 @@ const { styles, selectedKey } = useMapStyle()
 
       <template #default="{ collapsed }">
         <UNavigationMenu
+          :collapsed="collapsed"
           :items="pages"
           orientation="vertical"
           :ui="{ link: collapsed ? 'justify-center' : undefined }"
@@ -58,6 +62,22 @@ const { styles, selectedKey } = useMapStyle()
       </template>
     </UDashboardSidebar>
 
-    <slot />
+    <UDashboardPanel
+      id="playground-main"
+      :ui="{ body: 'flex flex-1 flex-col min-h-0 overflow-hidden p-0' }"
+    >
+      <template #header>
+        <UDashboardNavbar
+          :title="currentPage.label"
+          :icon="currentPage.icon"
+        />
+      </template>
+
+      <template #body>
+        <div class="playground-map-host relative min-h-0 flex-1 w-full">
+          <slot />
+        </div>
+      </template>
+    </UDashboardPanel>
   </UDashboardGroup>
 </template>
