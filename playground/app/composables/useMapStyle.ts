@@ -15,7 +15,7 @@ export interface MapStyleOption {
 
 export function useMapStyle() {
   const { clockworkApiKey, mapTilerKey, googleMapTilesApiKey } = useRuntimeConfig().public
-  const colorMode = useColorMode()
+  const colorMode = useResolvedColorMode()
 
   const styles: MapStyleOption[] = [
     {
