@@ -7,10 +7,35 @@ const colorMode = useColorMode()
 const center = ref<LngLatLike>([-100, 40])
 const zoom = ref(3)
 const visibleLayers = ref(['city-circles', 'city-labels'])
-const circleColor = ref('#03C169')
-const labelColor = ref('#1A73E8')
 
-const ringOpacity = 0.4
+/** User overrides from the color pickers; when unset, theme defaults apply. */
+const circleColorOverride = ref<string | null>(null)
+const labelColorOverride = ref<string | null>(null)
+
+const isDark = computed(() => colorMode.value === 'dark')
+
+const themeLayerColors = computed(() => ({
+  circle: isDark.value ? '#34d399' : '#03C169',
+  label: isDark.value ? '#e2e8f0' : '#334155',
+  labelHalo: isDark.value ? 'rgba(15, 15, 15, 0.9)' : 'rgba(255, 255, 255, 0.92)',
+  circleStroke: isDark.value ? '#f8fafc' : '#1a1a1a',
+  ringOpacity: isDark.value ? 0.55 : 0.4,
+}))
+
+const circleColor = computed({
+  get: () => circleColorOverride.value ?? themeLayerColors.value.circle,
+  set: (value: string) => {
+    circleColorOverride.value = value
+  },
+})
+
+const labelColor = computed({
+  get: () => labelColorOverride.value ?? themeLayerColors.value.label,
+  set: (value: string) => {
+    labelColorOverride.value = value
+  },
+})
+
 const showCircles = computed(() => visibleLayers.value.includes('city-circles'))
 const showLabels = computed(() => visibleLayers.value.includes('city-labels'))
 const circleColorChip = computed(() => ({ backgroundColor: circleColor.value }))
@@ -18,16 +43,17 @@ const labelColorChip = computed(() => ({ backgroundColor: labelColor.value }))
 
 const labelPaint = computed(() => ({
   'text-color': labelColor.value,
-  'text-halo-color': colorMode.value === 'dark' ? 'rgba(26, 26, 26, 0.4)' : 'rgba(255, 255, 255, 0.4)',
-  'text-halo-width': 1,
+  'text-halo-color': themeLayerColors.value.labelHalo,
+  'text-halo-width': isDark.value ? 1.75 : 1.5,
+  'text-halo-blur': isDark.value ? 0.35 : 0.25,
 }))
 
 const circlePaint = computed(() => ({
   'circle-radius': 8,
   'circle-color': circleColor.value,
   'circle-stroke-width': 2,
-  'circle-stroke-color': colorMode.value === 'dark' ? '#ffffff' : '#1a1a1a',
-  'circle-stroke-opacity': ringOpacity,
+  'circle-stroke-color': themeLayerColors.value.circleStroke,
+  'circle-stroke-opacity': themeLayerColors.value.ringOpacity,
 }))
 
 const circleLayout = computed(() => ({
@@ -36,9 +62,12 @@ const circleLayout = computed(() => ({
 
 const labelLayout = computed(() => ({
   'text-field': ['get', 'name'] as ExpressionSpecification,
+  'text-font': ['Open Sans Regular', 'Arial Unicode MS Regular'],
   'text-anchor': 'top' as const,
-  'text-offset': [0, 1.5] as PropertyValueSpecification<[number, number]>,
-  'text-size': 12,
+  'text-offset': [0, 1.1] as PropertyValueSpecification<[number, number]>,
+  'text-size': 13,
+  'text-line-height': 1.2,
+  'text-max-width': 10,
   'text-allow-overlap': true,
   'text-ignore-placement': true,
   visibility: (showLabels.value ? 'visible' : 'none') as 'visible' | 'none',
@@ -83,18 +112,16 @@ const sourceState = computed(() => ({
 const layerState = computed(() => [
   {
     id: 'city-circles',
-    label: 'city-circles',
-    description: `circle · ${showCircles.value ? 'visible' : 'hidden'}`,
+    label: 'Circle markers',
+    description: `city-circles · ${showCircles.value ? 'Visible' : 'Hidden'}`,
     value: 'city-circles',
-    visible: showCircles.value,
     color: circleColor.value,
   },
   {
     id: 'city-labels',
-    label: 'city-labels',
-    description: `symbol · ${showLabels.value ? 'visible' : 'hidden'}`,
+    label: 'City names',
+    description: `city-labels · ${showLabels.value ? 'Visible' : 'Hidden'}`,
     value: 'city-labels',
-    visible: showLabels.value,
     color: labelColor.value,
   },
 ])
@@ -124,27 +151,39 @@ const layerState = computed(() => [
       <MapControl class="w-72">
         <div class="space-y-4">
           <div>
-            <p class="text-xs font-semibold text-(--ui-text-muted) uppercase tracking-wide">
+            <p class="text-xs font-medium text-(--ui-text-muted)">
               Source
             </p>
-            <div class="mt-2 grid grid-cols-3 gap-2 text-xs">
+            <dl class="mt-2 grid grid-cols-3 gap-x-2 gap-y-3 text-xs">
               <div>
-                <p class="text-(--ui-text-muted)">ID</p>
-                <p class="font-mono text-(--ui-text-highlighted)">{{ sourceState.id }}</p>
+                <dt class="text-[11px] font-medium text-(--ui-text-muted)">
+                  ID
+                </dt>
+                <dd class="mt-0.5 font-mono text-sm text-(--ui-text-highlighted) truncate">
+                  {{ sourceState.id }}
+                </dd>
               </div>
               <div>
-                <p class="text-(--ui-text-muted)">Type</p>
-                <p class="font-mono text-(--ui-text-highlighted)">{{ sourceState.type }}</p>
+                <dt class="text-[11px] font-medium text-(--ui-text-muted)">
+                  Type
+                </dt>
+                <dd class="mt-0.5 font-mono text-sm text-(--ui-text-highlighted)">
+                  {{ sourceState.type }}
+                </dd>
               </div>
               <div>
-                <p class="text-(--ui-text-muted)">Features</p>
-                <p class="font-mono text-(--ui-text-highlighted)">{{ sourceState.features }}</p>
+                <dt class="text-[11px] font-medium text-(--ui-text-muted)">
+                  Features
+                </dt>
+                <dd class="mt-0.5 font-mono text-sm text-(--ui-text-highlighted) tabular-nums">
+                  {{ sourceState.features }}
+                </dd>
               </div>
-            </div>
+            </dl>
           </div>
 
           <div>
-            <p class="text-xs font-semibold text-(--ui-text-muted) uppercase tracking-wide">
+            <p class="text-xs font-medium text-(--ui-text-muted)">
               Layers
             </p>
             <UListbox
@@ -153,12 +192,24 @@ const layerState = computed(() => [
               multiple
               value-key="value"
               class="mt-2"
-              :ui="{ root: 'ring-default', item: 'cursor-pointer' }"
-            />
+              :ui="{
+                root: 'ring-default',
+                item: 'cursor-pointer',
+                itemLabel: 'font-medium text-(--ui-text-highlighted)',
+                itemDescription: 'text-[11px] text-(--ui-text-muted) font-mono',
+              }"
+            >
+              <template #item-leading="{ item }">
+                <span
+                  class="size-3 shrink-0 rounded-full ring ring-default"
+                  :style="{ backgroundColor: item.color }"
+                />
+              </template>
+            </UListbox>
           </div>
 
           <div>
-            <p class="text-xs font-semibold text-(--ui-text-muted) uppercase tracking-wide">
+            <p class="text-xs font-medium text-(--ui-text-muted)">
               Colors
             </p>
             <div class="mt-2 grid grid-cols-2 gap-2">

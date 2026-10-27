@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 bg-white/90 dark:bg-neutral-800/90 rounded-lg shadow-lg text-sm">
+  <div class="p-3 rounded-lg text-sm shadow-lg ring ring-default backdrop-blur-sm bg-(--ui-bg-elevated)/95">
     <slot />
   </div>
 </template>

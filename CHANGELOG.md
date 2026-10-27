@@ -1,5 +1,47 @@
 # Changelog
 
+## v3.0.0
+
+[compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.1.0...v3.0.0)
+
+### 🚀 Enhancements
+
+- Upgrade to [@indoorequal/vue-maplibre-gl](https://indoorequal.github.io/vue-maplibre-gl/) v9 and [maplibre-gl](https://maplibre.org/) v6 ([11563e4](https://github.com/marr/nuxt-maplibre/commit/11563e4))
+
+#### ⚠️ Breaking Changes
+
+This release follows **vue-maplibre-gl 9**, which requires **maplibre-gl 6**. MapLibre v6 is a major upgrade with its own breaking changes. Read the official [v5 to v6 migration guide](https://maplibre.org/maplibre-gl-js/docs/guides/v5-to-v6-migration-guide/) and the [v6.0.0 release notes](https://github.com/maplibre/maplibre-gl-js/releases/tag/v6.0.0) before upgrading.
+
+**What changes for typical Nuxt MapLibre users**
+
+- **Components and composables** (`MglMap`, `useMap`, etc.) are unchanged at the module API level; behavior comes from vue-maplibre-gl and maplibre-gl.
+- **Direct `maplibre-gl` imports in your app** must not use a default import. Use named imports or a namespace import, for example:
+
+  ```ts
+  // before (maplibre-gl v5)
+  import maplibregl from 'maplibre-gl'
+  maplibregl.addProtocol('custom', handler)
+
+  // after (maplibre-gl v6)
+  import { addProtocol } from 'maplibre-gl'
+  addProtocol('custom', handler)
+  ```
+
+**MapLibre v6 changes that may affect your app** (see the migration guide for details):
+
+- ESM-only distribution (no UMD/CSP bundles; CDN usage must load `maplibre-gl.mjs` as a module).
+- **WebGL2** is required.
+- Style spec updates (legacy expressions may fail load with stricter validation).
+- `styleimagemissing` no longer supplies images; use `Map#setMissingStyleImageResolver`.
+- Nested GeoJSON feature properties are real objects, not JSON strings.
+- Event and source APIs have stricter typing; avoid relying on removed internals such as `map.transform`.
+
+The module still aliases `@indoorequal/vue-maplibre-gl` to its ESM build so Nuxt/Vite resolve the correct entry.
+
+### ❤️ Contributors
+
+- David Marr <dave.marr@gmail.com>
+
 ## v2.1.0
 
 [compare changes](https://github.com/marr/nuxt-maplibre/compare/v2.0.3...v2.1.0)

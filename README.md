@@ -73,6 +73,16 @@ export default defineNuxtConfig({
 });
 ```
 
+## Upgrading from v2
+
+**v3** ships **maplibre-gl 6** and **vue-maplibre-gl 9**. That is a major MapLibre upgrade, not just a patch bump for this module.
+
+1. Bump `@dmarr/nuxt-maplibre` to v3 and reinstall so your lockfile picks up the new MapLibre stack.
+2. If your app imports `maplibre-gl` directly (alongside `Mgl*` components), replace default imports with [named or namespace imports](https://maplibre.org/maplibre-gl-js/docs/guides/v5-to-v6-migration-guide/#imports). The playground in this repo uses `import { LngLat, addProtocol } from 'maplibre-gl'`.
+3. Review MapLibre’s [v5 → v6 migration guide](https://maplibre.org/maplibre-gl-js/docs/guides/v5-to-v6-migration-guide/) for map styles, events, GeoJSON handling, WebGL2, and any custom layers or workers.
+
+Component-only usage (`MglMap`, controls, sources, layers) often needs no code changes; custom MapLibre integration and styles are where v6 breaks most often.
+
 ## Development
 
 ```bash

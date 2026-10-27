@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   modules: ['../src/module', '@nuxt/ui'],
   compatibilityDate: '2025-10-01',
   devtools: {
-    enabled: true,
+    enabled: false,
   },
   colorMode: {
     preference: 'system',
