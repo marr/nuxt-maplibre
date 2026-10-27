@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import maplibre from 'maplibre-gl'
+import { LngLat } from 'maplibre-gl'
 import type { LngLatLike } from 'maplibre-gl'
 
 const props = withDefaults(
@@ -11,7 +11,7 @@ const props = withDefaults(
   { eyebrow: 'Marker', title: 'Position' },
 )
 
-const point = computed(() => maplibre.LngLat.convert(props.coordinates))
+const point = computed(() => LngLat.convert(props.coordinates))
 const latStr = computed(() => point.value.lat.toFixed(5))
 const lngStr = computed(() => point.value.lng.toFixed(5))
 </script>

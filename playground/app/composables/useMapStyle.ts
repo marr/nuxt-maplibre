@@ -1,8 +1,8 @@
-import maplibregl from 'maplibre-gl'
+import { addProtocol } from 'maplibre-gl'
 import type { StyleSpecification } from 'maplibre-gl'
 import { createGoogleStyle, googleProtocol } from 'maplibre-google-maps'
 
-maplibregl.addProtocol('google', googleProtocol)
+addProtocol('google', googleProtocol)
 
 export interface MapStyleOption {
   key: string
