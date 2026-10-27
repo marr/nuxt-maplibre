@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import maplibre from "maplibre-gl";
-import type { LngLatLike, StyleSpecification } from "maplibre-gl";
-
-const { LngLat } = maplibre;
+import { LngLat } from 'maplibre-gl'
+import type { LngLatLike, StyleSpecification } from 'maplibre-gl'
 const { mapStyle } = defineProps<{
   mapStyle: string | StyleSpecification | undefined;
 }>();

@@ -1,6 +1,6 @@
 {
   "name": "@dmarr/nuxt-maplibre",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A Nuxt module to use MapLibre",
   "homepage": "https://marr.github.io/nuxt-maplibre",
   "repository": {
@@ -41,8 +41,8 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@indoorequal/vue-maplibre-gl": "^8.4.2",
-    "maplibre-gl": "^5.24.0",
+    "@indoorequal/vue-maplibre-gl": "^9.0.1",
+    "maplibre-gl": "^6.16.0",
     "maplibre-google-maps": "^1.1.0",
     "maplibre-theme": "^1.0.0"
   },

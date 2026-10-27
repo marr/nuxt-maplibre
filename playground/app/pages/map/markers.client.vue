@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import maplibre from 'maplibre-gl'
+import { LngLat } from 'maplibre-gl'
 import type { LngLatLike } from 'maplibre-gl'
 
 const { current } = useMapStyle()
@@ -33,7 +33,7 @@ function parseMarkerHash(value: string): [number, number] | undefined {
 }
 
 function formatMarkerHash(coordinates: LngLatLike) {
-  const { lat, lng } = maplibre.LngLat.convert(coordinates)
+  const { lat, lng } = LngLat.convert(coordinates)
 
   return `#marker=${lat.toFixed(5)},${lng.toFixed(5)}`
 }
