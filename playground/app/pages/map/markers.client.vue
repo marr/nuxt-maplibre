@@ -9,14 +9,14 @@ const router = useRouter()
 const defaultMarker: [number, number] = [-70.84961090021761, 42.262697082725936]
 const defaultCenter: [number, number] = [-70.99472213822588, 42.37041979229858]
 
-function parseMarkerHash(value: string): [number, number] | undefined {
-  const rawValue = value.replace(/^#/, '')
+const MARKER_QUERY_KEY = 'marker'
 
-  if (!rawValue.startsWith('marker=')) {
+function parseMarkerPair(raw: string | undefined): [number, number] | undefined {
+  if (!raw) {
     return undefined
   }
 
-  const [lat, lng] = rawValue.slice('marker='.length).split(',').map(Number)
+  const [lat, lng] = raw.split(',').map(Number)
 
   if (
     Number.isFinite(lat)
@@ -32,22 +32,29 @@ function parseMarkerHash(value: string): [number, number] | undefined {
   return undefined
 }
 
-function formatMarkerHash(coordinates: LngLatLike) {
+function formatMarkerQuery(coordinates: LngLatLike) {
   const { lat, lng } = LngLat.convert(coordinates)
 
-  return `#marker=${lat.toFixed(5)},${lng.toFixed(5)}`
+  return `${lat.toFixed(5)},${lng.toFixed(5)}`
 }
 
-const initialMarker = parseMarkerHash(route.hash) ?? defaultMarker
-const center = ref<LngLatLike>(parseMarkerHash(route.hash) ?? defaultCenter)
+function markerFromRoute(): [number, number] | undefined {
+  const fromQuery = route.query[MARKER_QUERY_KEY]
+  const queryRaw = Array.isArray(fromQuery) ? fromQuery[0] : fromQuery
+
+  return parseMarkerPair(typeof queryRaw === 'string' ? queryRaw : undefined)
+}
+
+const initialMarker = markerFromRoute() ?? defaultMarker
+const center = ref<LngLatLike>(markerFromRoute() ?? defaultCenter)
 const zoom = ref(10)
 const marker = ref<LngLatLike>(initialMarker)
 const draggable = ref(true)
 
 watch(
-  () => route.hash,
-  (value) => {
-    const nextMarker = parseMarkerHash(value)
+  () => route.query[MARKER_QUERY_KEY],
+  () => {
+    const nextMarker = markerFromRoute()
 
     if (!nextMarker) {
       return
@@ -57,20 +64,23 @@ watch(
   },
 )
 
-watch(
-  () => formatMarkerHash(marker.value),
-  async (markerHash) => {
-    if (route.hash === markerHash) {
-      return
-    }
+function syncMarkerQueryToRoute() {
+  const markerQuery = formatMarkerQuery(marker.value)
+  const currentQuery = route.query[MARKER_QUERY_KEY]
+  const currentRaw = Array.isArray(currentQuery) ? currentQuery[0] : currentQuery
 
-    await router.replace({
-      path: route.path,
-      query: route.query,
-      hash: markerHash,
-    })
-  },
-)
+  if (currentRaw === markerQuery) {
+    return
+  }
+
+  void router.replace({
+    path: route.path,
+    query: {
+      ...route.query,
+      [MARKER_QUERY_KEY]: markerQuery,
+    },
+  })
+}
 </script>
 <template>
   <MglMap
@@ -80,7 +90,11 @@ watch(
     :attribution-control="{ compact: true }"
   >
     <MglNavigationControl />
-    <MglMarker v-model:coordinates="marker" :draggable="draggable">
+    <MglMarker
+      v-model:coordinates="marker"
+      :draggable="draggable"
+      @dragend="syncMarkerQueryToRoute"
+    >
       <MglPopup
         anchor="bottom"
         :offset="[0, -40]"
